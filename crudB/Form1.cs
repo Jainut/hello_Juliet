@@ -53,26 +53,30 @@ namespace crudB
         {
             string name = textBox1.Text;
             string email = textBox4.Text;
-            int age = Convert.ToInt32(textBox3.Text);
+            string curse = textBox3.Text;
+            string turma = textBox5.Text;
+            string phone = textBox6.Text;
             string password = textBox2.Text;
 
-            var user = new User()
-            {
-                name = name,
-                email = email,
-                age = age,
-                password = password,
-            };
+        var user = new User()
+        {
+            name = name,
+            email = email,
+            curse = curse,
+            turma = turma,
+            phone = phone,
+            password = password,
+        };
 
-            string json = JsonSerializer.Serialize(user);
+        string json = JsonSerializer.Serialize(user);
 
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync($"{Config.URL}/registrar", content);
+        var response = await client.PostAsync($"{Config.URL}/registrar", content);
 
-            string res = await response.Content.ReadAsStringAsync();
+        string res = await response.Content.ReadAsStringAsync();
 
-            MessageBox.Show(res);
+        MessageBox.Show(res);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -89,7 +93,17 @@ namespace crudB
             Form3 form3 = new Form3(this);
 
             form3.Show();
-            this.Hide();    
-        }   
+            this.Hide();
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
